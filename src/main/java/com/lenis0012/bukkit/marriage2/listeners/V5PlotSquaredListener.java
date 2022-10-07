@@ -1,11 +1,12 @@
 package com.lenis0012.bukkit.marriage2.listeners;
 
+import com.intellectualcrafters.plot.api.PlotAPI;
+import com.intellectualcrafters.plot.object.Plot;
+import com.intellectualcrafters.plot.object.PlotPlayer;
 import com.lenis0012.bukkit.marriage2.MData;
 import com.lenis0012.bukkit.marriage2.events.PlayerDivorceEvent;
 import com.lenis0012.bukkit.marriage2.events.PlayerMarryEvent;
-import com.plotsquared.core.api.PlotAPI;
-import com.plotsquared.core.player.PlotPlayer;
-import com.plotsquared.core.plot.Plot;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -26,14 +27,14 @@ public class V5PlotSquaredListener implements Listener {
         PlotPlayer plotPlayer = plotSquared.wrapPlayer(player);
         PlotPlayer plotPartner = plotSquared.wrapPlayer(partner);
 
-        for(Plot plot : plotSquared.getPlayerPlots(plotPlayer)) {
+        for(Plot plot : plotSquared.getPlayerPlots((Player) plotPlayer)) {
             if(plot.getTrusted().contains(partner)) {
                 continue;
             }
             plot.addTrusted(partner);
         }
 
-        for(Plot plot : plotSquared.getPlayerPlots(plotPartner)) {
+        for(Plot plot : plotSquared.getPlayerPlots((Player) plotPartner)) {
             if(plot.getTrusted().contains(player)) {
                 continue;
             }
@@ -49,14 +50,14 @@ public class V5PlotSquaredListener implements Listener {
         PlotPlayer plotPlayer = plotSquared.wrapPlayer(player);
         PlotPlayer plotPartner = plotSquared.wrapPlayer(partner);
 
-        for(Plot plot : plotSquared.getPlayerPlots(plotPlayer)) {
+        for(Plot plot : plotSquared.getPlayerPlots((Player) plotPlayer)) {
             if(!plot.getTrusted().contains(partner)) {
                 continue;
             }
             plot.removeTrusted(partner);
         }
 
-        for(Plot plot : plotSquared.getPlayerPlots(plotPartner)) {
+        for(Plot plot : plotSquared.getPlayerPlots((Player) plotPartner)) {
             if(!plot.getTrusted().contains(player)) {
                 continue;
             }

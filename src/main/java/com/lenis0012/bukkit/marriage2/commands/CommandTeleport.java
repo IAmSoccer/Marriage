@@ -60,7 +60,7 @@ public class CommandTeleport extends Command {
     private Location getSafeLocation(Location destination) {
         World world = destination.getWorld();
         Block block = destination.getBlock();
-        if(block == null || block.getY() < 0 || block.getY() > world.getMaxHeight()) {
+        if(block == null || block.getY() < world.getMinHeight() || block.getY() > world.getMaxHeight()) {
             return null; // Out of bounds, cant teleport to void or from a bizarre height.
         }
 
