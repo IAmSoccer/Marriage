@@ -1,10 +1,12 @@
 package com.lenis0012.bukkit.marriage2.commands;
 
+import com.earth2me.essentials.IEssentialsModule;
 import com.lenis0012.bukkit.marriage2.MData;
 import com.lenis0012.bukkit.marriage2.MPlayer;
 import com.lenis0012.bukkit.marriage2.Marriage;
 import com.lenis0012.bukkit.marriage2.config.Message;
 import com.lenis0012.bukkit.marriage2.config.Settings;
+import net.ess3.api.IEssentials;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -41,7 +43,7 @@ public class CommandTeleport extends Command {
         }
 
         Location destination = partner.getLocation();
-        if(player.getGameMode() != GameMode.CREATIVE) {
+        if(player.getGameMode() != GameMode.CREATIVE && (!player.isFlying() || !player.hasPermission("essentials.fly"))) {
             destination = getSafeLocation(destination);
         }
 

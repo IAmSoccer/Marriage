@@ -38,7 +38,8 @@ public enum Permissions {
     /**
      * Non-commands
      */
-    CHAT_COLOR("marry.color", 1);
+    CHAT_COLOR("marry.color", 1),
+    CHAT_SPY_BYPASS("marry.chatspy.bypass", 1);
 
     private static boolean vaultEnabled = false;
     private static Permission permissionService;

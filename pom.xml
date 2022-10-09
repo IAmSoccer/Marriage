@@ -14,6 +14,11 @@
     </properties>
 
     <repositories>
+        <!-- Repo for access to Essentials -->
+        <repository>
+            <id>essentials-releases</id>
+            <url>https://repo.essentialsx.net/releases/</url>
+        </repository>
         <!-- Repo for access to CraftBukkit -->
         <repository>
             <id>md5-repo</id>
@@ -85,6 +90,13 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- EssentialsX -->
+        <dependency>
+            <groupId>net.essentialsx</groupId>
+            <artifactId>EssentialsX</artifactId>
+            <version>2.19.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
