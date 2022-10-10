@@ -12,8 +12,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import static org.bukkit.Bukkit.getServer;
-
 public class ChatListener implements Listener {
     private final MarriageCore core;
 
@@ -62,11 +60,9 @@ public class ChatListener implements Listener {
                             .replace("{message}", event.getMessage());
                 }
                 if (player.hasPermission("marry.chatspy.bypass") || partner.hasPermission("marry.chatspy.bypass")) {
-                    getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Hello! I'm your friendly Debug Message saying that I blocked someone's message from being sent to Chat Spy!");
                     continue;
                 }
                 else {
-                    getServer().getConsoleSender().sendMessage(ChatColor.RED + "Hello! I'm your friendly Debug Message saying that I didn't block someone's message from being sent to Chat Spy!");
                     admin.sendMessage(adminMessage);
                 }
 
