@@ -5,7 +5,6 @@ import com.lenis0012.bukkit.marriage2.MPlayer;
 import com.lenis0012.bukkit.marriage2.Marriage;
 import com.lenis0012.bukkit.marriage2.config.Message;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -31,8 +30,8 @@ public class CommandGift extends Command {
             return;
         }
 
-        ItemStack item = player.getItemInHand();
-        if(item == null || item.getType() == Material.AIR) {
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if(item == null || item.getType().isAir()) {
             reply(Message.NO_ITEM);
             return;
         }
@@ -42,8 +41,13 @@ public class CommandGift extends Command {
             return;
         }
 
-        partner.getInventory().addItem(item.clone());
-        player.setItemInHand(null);
+        ItemStack copy = item.clone();
+
+        item.setAmount(0);
+        player.getInventory().setItemInMainHand(null);
+
+        partner.getInventory().addItem(copy);
+
         reply(Message.ITEM_GIFTED, item.getAmount(), item.getType().toString().toLowerCase());
         reply(partner, Message.GIFT_RECEIVED, item.getAmount(), item.getType().toString().toLowerCase());
     }
